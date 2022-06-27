@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IPlatoCodeChallenge.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace IPlatoCodeChallenge.Views
         public PersonView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            Person personToRemove = btn.DataContext as Person;
+
         }
     }
 }

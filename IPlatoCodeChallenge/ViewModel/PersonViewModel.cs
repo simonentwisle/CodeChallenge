@@ -9,12 +9,12 @@ namespace IPlatoCodeChallenge.ViewModel
 
     public class PersonViewModel
     {
-        public GenericICommand DeleteCommand { get; set; }
+        public RelayCommand DeleteCommand { get; set; }
 
         public PersonViewModel()
         {
             LoadPeople();
-            DeleteCommand = new GenericICommand(OnDelete, CanDelete);
+            DeleteCommand = new RelayCommand(OnDelete, CanDelete);
         }
 
         public ObservableCollection<Person> People

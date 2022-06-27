@@ -23,6 +23,8 @@
 
                 <TextBox Text = "{Binding Path = Profession, Mode = TwoWay}" 
                Width = "100" Margin = "0 5 3 5"/>
+
+               <Button Content="Delete" Command="{Binding  DeleteCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Click="Button_Click" Width = "75"/>
             </StackPanel>
 
         </DataTemplate>
@@ -32,12 +34,6 @@
         <StackPanel Orientation = "Horizontal">
             <ListBox ItemsSource = "{Binding People}" 
             SelectedItem = "{Binding SelectedPerson}"/>
-
-            <Button Content = "Delete" 
-            Command = "{Binding DeleteCommand}"
-            HorizontalAlignment = "Left" 
-            VerticalAlignment = "Top" 
-            Width = "75" />
         </StackPanel>
     </Grid>
 
