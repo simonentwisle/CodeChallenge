@@ -7,11 +7,11 @@
    xmlns:local = "clr-namespace:IPlatoCodeChallenge.Views" 
    xmlns:viewModel = "clr-namespace:IPlatoCodeChallenge.ViewModel" 
    xmlns:data = "clr-namespace:IPlatoCodeChallenge.Model" 
-   xmlns:vml = "clr-namespace:IPlatoCodeChallenge.vml" xmlns:interactivity="http://schemas.microsoft.com/xaml/behaviors" xmlns:prism1="http://www.codeplex.com/prism"
+   xmlns:vml = "clr-namespace:IPlatoCodeChallenge.vml" xmlns:interactivity="http://schemas.microsoft.com/xaml/behaviors" xmlns:prism1="http://www.codeplex.com/prism" d:DataContext="{d:DesignInstance Type=data:Person}"
              mc:Ignorable = "d" d:DesignHeight = "300" d:DesignWidth = "300">
 
     <UserControl.Resources>
-        <DataTemplate DataType = "{x:Type data:Person}">
+        <DataTemplate x:Name="Person" DataType = "{x:Type data:Person}">
             <StackPanel Orientation = "Horizontal">
                 <TextBox Text = "{Binding Path = FirstName, Mode = TwoWay}" 
                Width = "100" Margin = "3 5 3 5"/>
@@ -24,9 +24,6 @@
 
                 <TextBox Text = "{Binding Path = Profession, Mode = TwoWay}" 
                Width = "100" Margin = "0 5 3 5"/>
-
-                
-
             </StackPanel>
 
         </DataTemplate>
@@ -34,6 +31,17 @@
 
     <Grid>
         <StackPanel Orientation = "Vertical">
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxName" Height="27" 
+                       Text="{Binding Path=SelectedPerson.FirstName, Mode=TwoWay}"  Margin="5"  Width="300" HorizontalAlignment="Left"/>
+            <StackPanel Orientation = "Horizontal">
+                <Button  Content="Select" Command="{Binding  SelectCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Width = "75">
+                    <interactivity:Interaction.Triggers>
+                        <interactivity:EventTrigger EventName="Click">
+                            <prism1:InvokeCommandAction Command="{Binding Path=InitializedCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" />
+                        </interactivity:EventTrigger>
+                    </interactivity:Interaction.Triggers>
+                </Button>
+            </StackPanel>
             <Button  Content="Delete" Command="{Binding  DeleteCommand}" CommandParameter="{Binding Content, RelativeSource={RelativeSource Self}}" Width = "75">
                 <interactivity:Interaction.Triggers>
                     <interactivity:EventTrigger EventName="Click">

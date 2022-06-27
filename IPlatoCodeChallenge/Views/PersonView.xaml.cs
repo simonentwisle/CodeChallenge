@@ -25,12 +25,5 @@ namespace IPlatoCodeChallenge.Views
         {
             InitializeComponent();
         }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            Button btn = sender as Button;
-            Person personToRemove = btn.DataContext as Person;
-            
-        }
     }
 }

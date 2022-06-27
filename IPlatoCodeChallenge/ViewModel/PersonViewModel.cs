@@ -12,26 +12,25 @@ namespace IPlatoCodeChallenge.ViewModel
     public class PersonViewModel
     {
         public DelegateCommand DeleteCommand { get; set; }
+        public DelegateCommand SelectCommand { get; set; }
 
         public PersonViewModel()
         {
             LoadPeople();
             //DeleteCommand = new RelayCommand(OnDelete, CanDelete);
-            //DeleteCommand = new RelayCommand(o => DeleteButtonClick("MainButton"),OnDelete, CanDelete);
             DeleteCommand = new DelegateCommand(DeleteButtonClick);
+            SelectCommand = new DelegateCommand(SelectButtonClick);
+        }
+
+        private void SelectButtonClick()
+        {
+            //People.Remove(SelectedPerson);
         }
 
         private void DeleteButtonClick()
         {
             People.Remove(SelectedPerson);
         }
-
-        private void DeleteButtonClick(object sender)
-        {
-            People.Remove(SelectedPerson);
-            throw new NotImplementedException();
-        }
-
 
         public ObservableCollection<Person> People
         {
@@ -82,7 +81,7 @@ namespace IPlatoCodeChallenge.ViewModel
 
                 return new DelegateCommand(delegate ()
                 {
-                    //***DoSomething...***
+                    //Initializes command delegate
                 });
             }
         }
