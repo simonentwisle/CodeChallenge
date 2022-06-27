@@ -3,19 +3,35 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System;
 using IPlatoCodeChallenge;
+using Microsoft.VisualStudio.Utilities;
+using Prism.Commands;
 
 namespace IPlatoCodeChallenge.ViewModel
 {
 
     public class PersonViewModel
     {
-        public RelayCommand DeleteCommand { get; set; }
+        public DelegateCommand DeleteCommand { get; set; }
 
         public PersonViewModel()
         {
             LoadPeople();
-            DeleteCommand = new RelayCommand(OnDelete, CanDelete);
+            //DeleteCommand = new RelayCommand(OnDelete, CanDelete);
+            //DeleteCommand = new RelayCommand(o => DeleteButtonClick("MainButton"),OnDelete, CanDelete);
+            DeleteCommand = new DelegateCommand(DeleteButtonClick);
         }
+
+        private void DeleteButtonClick()
+        {
+            People.Remove(SelectedPerson);
+        }
+
+        private void DeleteButtonClick(object sender)
+        {
+            People.Remove(SelectedPerson);
+            throw new NotImplementedException();
+        }
+
 
         public ObservableCollection<Person> People
         {
@@ -57,6 +73,18 @@ namespace IPlatoCodeChallenge.ViewModel
         private bool CanDelete()
         {
             return SelectedPerson != null;
+        }
+
+        public DelegateCommand InitializedCommand
+        {
+            get
+            {
+
+                return new DelegateCommand(delegate ()
+                {
+                    //***DoSomething...***
+                });
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ namespace IPlatoCodeChallenge
     {
         Action _TargetExecuteMethod;
         Func<bool> _TargetCanExecuteMethod;
+        private Action<object> value;
+        private Action onDelete;
+        private Func<bool> canDelete;
 
         public RelayCommand(Action executeMethod)
         {
@@ -21,6 +25,13 @@ namespace IPlatoCodeChallenge
         {
             _TargetExecuteMethod = executeMethod;
             _TargetCanExecuteMethod = canExecuteMethod;
+        }
+
+        public RelayCommand(Action<object> value, Action onDelete, Func<bool> canDelete)
+        {
+            this.value = value;
+            this.onDelete = onDelete;
+            this.canDelete = canDelete;
         }
 
         public void RaiseCanExecuteChanged()
@@ -52,5 +63,7 @@ namespace IPlatoCodeChallenge
                 _TargetExecuteMethod();
             }
         }
+
+       
     } 
 }
