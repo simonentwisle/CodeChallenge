@@ -33,8 +33,8 @@
     <Grid>
         <StackPanel Orientation = "Vertical">
 
-            <GroupBox Header="Person" Margin="10">
-                <Grid Height="150">
+            <GroupBox Header="Click On A Person To Edit" Margin="10">
+                <Grid Height="100">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
@@ -47,22 +47,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Label Content="First Name" HorizontalAlignment="Left" 
-                       VerticalContentAlignment="Center" Grid.Column="0" Grid.Row="0"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxFirstName" Height="27" 
-                       Text="{Binding Path=SelectedPerson.FirstName, Mode=TwoWay}"  Margin="5"  Width="300" HorizontalAlignment="Left"/>
-                    <Label Content="Last Name" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
-                       Grid.Row="1" Grid.Column="0"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="TextBoxLasstName" Height="27" 
-                       Text="{Binding Path=SelectedPerson.LastName, Mode=TwoWay}" Margin="5" Width="70" HorizontalAlignment="Left"/>
-                    <Label Content="DOB" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
-                       Grid.Row="2" Grid.Column="0" />
-                    <TextBox Grid.Row="2" Grid.Column="1" x:Name="TextBoxDOB" Height="27" 
-                       Text="{Binding Path=SelectedPerson.DOB, Mode=TwoWay}" Margin="5" Width="300" HorizontalAlignment="Left"/>
-                    <Label Content="Profession" HorizontalAlignment="Left" VerticalContentAlignment="Center" 
-                       Grid.Row="3" Grid.Column="0" />
-                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="TextBoxProfession" Height="27"
-                       Text="{Binding Path=SelectedPerson.Profession, Mode=TwoWay}" Margin="5" Width="300" HorizontalAlignment="Left"/>
+                   
                     <Button Grid.Column="0"  Grid.Row="4" Content="Delete" Command="{Binding  DeleteCommand}" Width="75">
                         <interactivity:Interaction.Triggers>
                             <interactivity:EventTrigger EventName="Click">

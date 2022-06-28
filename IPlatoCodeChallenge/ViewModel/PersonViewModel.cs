@@ -56,7 +56,7 @@ namespace IPlatoCodeChallenge.ViewModel
 
         private void UpdateButtonClick()
         {
-            
+
             //throw new NotImplementedException();
         }
 
