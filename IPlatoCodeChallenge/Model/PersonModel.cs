@@ -30,7 +30,6 @@ namespace IPlatoCodeChallenge.Model
                 {
                     firstName = value;
                     RaisePropertyChanged("FirstName");
-                    RaisePropertyChanged("FullName");
                 }
             }
         }
@@ -45,7 +44,6 @@ namespace IPlatoCodeChallenge.Model
                 {
                     lastName = value;
                     RaisePropertyChanged("LastName");
-                    RaisePropertyChanged("FullName");
                 }
             }
         }
@@ -56,11 +54,10 @@ namespace IPlatoCodeChallenge.Model
 
             set
             {
-                if (lastName != value)
+                if (dob != value)
                 {
                     dob = value;
-                    RaisePropertyChanged("LastName");
-                    RaisePropertyChanged("FullName");
+                    RaisePropertyChanged("DOB");
                 }
             }
         }
@@ -71,11 +68,10 @@ namespace IPlatoCodeChallenge.Model
 
             set
             {
-                if (lastName != value)
+                if (profession != value)
                 {
                     profession = value;
-                    RaisePropertyChanged("LastName");
-                    RaisePropertyChanged("FullName");
+                    RaisePropertyChanged("Profession");
                 }
             }
         }

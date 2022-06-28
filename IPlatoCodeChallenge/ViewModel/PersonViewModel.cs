@@ -12,14 +12,52 @@ namespace IPlatoCodeChallenge.ViewModel
     public class PersonViewModel
     {
         public DelegateCommand DeleteCommand { get; set; }
-        public DelegateCommand SelectCommand { get; set; }
+        //public DelegateCommand SelectCommand { get; set; }
+        public DelegateCommand UpdateCommand { get; set; }
+        public DelegateCommand NewCommand { get; set; }
 
         public PersonViewModel()
         {
             LoadPeople();
             //DeleteCommand = new RelayCommand(OnDelete, CanDelete);
             DeleteCommand = new DelegateCommand(DeleteButtonClick);
-            SelectCommand = new DelegateCommand(SelectButtonClick);
+            UpdateCommand = new DelegateCommand(UpdateButtonClick);
+            NewCommand = new DelegateCommand(NewButtonClick);
+        }
+
+        private void NewButtonClick()
+        {
+            if (SelectedPerson == null)
+            {
+                var newPerson = new Person();
+                People.Add(newPerson);
+                SelectedPerson = newPerson;
+                SelectedPerson.FirstName = "";
+                SelectedPerson.LastName = "";
+                SelectedPerson.DOB = "";
+                SelectedPerson.Profession = "";
+            }
+            else
+            {
+                var currentSelectedPerson = SelectedPerson;
+
+                //People.Add(currentSelectedPerson);
+                var newPerson = new Person();
+                newPerson.FirstName = "";
+                SelectedPerson = newPerson;
+                People.Add(newPerson);
+                SelectedPerson.FirstName = "";
+                SelectedPerson.LastName = "";
+                SelectedPerson.DOB = "";
+                SelectedPerson.Profession = "";
+            }
+
+        }
+
+        private void UpdateButtonClick()
+        {
+            
+            //throw new NotImplementedException();
         }
 
         private void SelectButtonClick()
@@ -60,7 +98,6 @@ namespace IPlatoCodeChallenge.ViewModel
             set
             {
                 _selectedPerson = value;
-                DeleteCommand.RaiseCanExecuteChanged();
             }
         }
 
